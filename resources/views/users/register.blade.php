@@ -1,11 +1,12 @@
 @extends('layouts.main')
+@section('css', asset('css/form.css'))
 @section('title', 'Регистрация')
 
 @section('content')
-    <h1>Регистрация</h1>
-
     <form action="{{ route('users.register') }}" method="post">
         @csrf
+
+        <h1 class="mb-2">Регистрация</h1>
 
         <div class="input-container">
             <label for="first_name">Имя</label>
@@ -31,6 +32,6 @@
             @error('password') <p class="error">{{ $message }}</p> @enderror
         </div>
 
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit" class="btn">Зарегистрироваться</button>
     </form>
 @endsection

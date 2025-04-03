@@ -1,11 +1,12 @@
 @extends('layouts.main')
+@section('css', asset('css/form.css'))
 @section('title', 'Авторизация')
 
 @section('content')
-    <h1>Авторизация</h1>
-
     <form action="{{ route('users.login') }}" method="post">
         @csrf
+
+        <h1>Авторизация</h1>
 
         <div class="input-container">
             <label for="email">E-mail</label>
@@ -21,6 +22,6 @@
 
         @error('auth') <p class="error">{{ $message }}</p> @enderror
 
-        <button type="submit">Войти</button>
+        <button type="submit" class="btn">Войти</button>
     </form>
 @endsection

@@ -1,11 +1,12 @@
 @extends('layouts.main')
+@section('css', asset('css/form.css'))
 @section('title', 'Добавить бренд')
 
 @section('content')
-    <h1>Добавить бренд</h1>
-
     <form action="{{ route('brands.store') }}" method="post">
         @csrf
+
+        <h1 class="mb-2">Добавить бренд</h1>
 
         <div class="input-container">
             <label for="name">Название</label>
@@ -13,6 +14,9 @@
             @error('name') <p class="error">{{ $message }}</p> @enderror
         </div>
 
-        <button type="submit">Добавить</button>
+        <div class="buttons">
+            <button type="submit" class="btn">Добавить</button>
+            <a href="{{ route('brands.index') }}" class="btn danger">Отмена</a>
+        </div>
     </form>
 @endsection

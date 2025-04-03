@@ -1,0 +1,11 @@
+:root {
+    --main: #6B7FD7;
+    --mainHover: #5869b1;
+    --secondary: #4C2A85;
+    --color1: #BCEDF6;
+    --color2: #DDFBD2;
+    --danger: #DB5856;
+    --dangerHover: #b54b49;
+    --radius: 1rem;
+    --lowRadius: .5rem;
+}

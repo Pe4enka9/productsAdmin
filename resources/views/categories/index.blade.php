@@ -1,44 +1,46 @@
 @extends('layouts.main')
+@section('css', asset('css/categories.css'))
 @section('title', 'Категории')
 
 @section('content')
-    <a href="{{ route('users.dashboard') }}">Домой</a>
+    <a href="{{ route('users.dashboard') }}" class="mb-2 btn home">Домой <img src="{{ asset('icons/house.svg') }}"
+                                                                              alt="House"></a>
 
-    <h1>Категории</h1>
+    <h1 class="mb-2">Категории</h1>
 
-    <a href="{{ route('categories.create') }}">Добавить</a>
+    <a href="{{ route('categories.create') }}" class="mb-2 btn">Добавить</a>
 
-    <ul>
-        @foreach($categories as $category)
-            <li>{{ $category->name }}</li>
+    <div class="category-tree">
+        <ul>
+            @foreach($categories as $category)
+                <li>{{ $category->name }}</li>
 
-            <ul>
-                @foreach($category->childrenCategories as $childrenCategory)
-                    @include('categories.children_categories', ['childrenCategory' => $childrenCategory])
-                @endforeach
-            </ul>
-        @endforeach
-    </ul>
+                <ul>
+                    @foreach($category->childrenCategories as $childrenCategory)
+                        @include('categories.children_categories', ['childrenCategory' => $childrenCategory])
+                    @endforeach
+                </ul>
+            @endforeach
+        </ul>
+    </div>
 
     <table>
         <thead>
         <tr>
-            <td>#</td>
-            <td>Название</td>
+            <th>Название</th>
+            <th>Действия</th>
         </tr>
         </thead>
-
         <tbody>
-        @foreach($categories as $category)
+        @foreach($allCategories as $category)
             <tr>
-                <td>{{ $category->id }}</td>
                 <td>{{ $category->name }}</td>
-                <td><a href="{{ route('categories.edit', $category) }}">Изменить</a></td>
-                <td>
+                <td class="buttons">
+                    <a href="{{ route('categories.edit', $category) }}" class="btn">Изменить</a>
                     <form action="{{ route('categories.destroy', $category) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Удалить</button>
+                        <button type="submit" class="btn danger">Удалить</button>
                     </form>
                 </td>
             </tr>

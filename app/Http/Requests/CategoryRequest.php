@@ -11,7 +11,8 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255', Rule::unique(Category::class, 'name')],
+            'name' => ['required', 'string', 'max:255'],
+            'parent_id' => ['nullable', 'integer'],
         ];
     }
 }

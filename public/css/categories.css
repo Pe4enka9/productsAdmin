@@ -1,0 +1,58 @@
+.btn img {
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+li {
+    margin: 5px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+.category-tree {
+    margin-top: 20px;
+}
+
+.category-tree ul {
+    padding-left: 20px;
+}
+
+.category-tree li {
+    position: relative;
+}
+
+.category-tree li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -15px;
+    width: 10px;
+    height: 100%;
+    border-left: 1px dashed #ccc;
+}
+
+.category-tree li:last-child::before {
+    height: 50%;
+}

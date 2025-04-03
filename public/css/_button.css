@@ -1,0 +1,60 @@
+.btn {
+    width: fit-content;
+
+    padding: .6em 1em;
+
+    display: block;
+
+    color: #fff;
+    background-color: var(--main);
+
+    outline: none;
+    border: none;
+    -webkit-border-radius: var(--radius);
+    -moz-border-radius: var(--radius);
+    border-radius: var(--radius);
+
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color .2s, box-shadow .3s ease;
+}
+
+.btn.danger {
+    background-color: #db5856;
+}
+
+.btn.danger:hover {
+    -webkit-box-shadow: 0 0 1rem var(--danger);
+    -moz-box-shadow: 0 0 1rem var(--danger);
+    box-shadow: 0 0 1rem var(--danger);
+}
+
+.btn.danger:active {
+    background-color: var(--dangerHover);
+}
+
+.btn:hover, .btn:focus {
+    -webkit-box-shadow: 0 0 1rem var(--secondary);
+    -moz-box-shadow: 0 0 1rem var(--secondary);
+    box-shadow: 0 0 1rem var(--secondary);
+}
+
+.btn:active {
+    background-color: var(--mainHover);
+}
+
+.btn:disabled {
+    background-color: #ccc;
+
+    cursor: not-allowed;
+}
+
+.btn.home {
+    display: flex !important;
+    align-items: center;
+    gap: .5rem;
+}
+
+.btn.home img {
+    height: 1.8rem;
+}

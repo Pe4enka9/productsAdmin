@@ -1,11 +1,12 @@
 @extends('layouts.main')
+@section('css', asset('css/form.css'))
 @section('title', 'Добавить товар')
 
 @section('content')
-    <h1>Добавить товар</h1>
-
     <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
         @csrf
+
+        <h1 class="mb-2">Добавить товар</h1>
 
         <div class="input-container">
             <label for="name">Название</label>
@@ -49,6 +50,9 @@
             </select>
         </div>
 
-        <button type="submit">Добавить</button>
+        <div class="buttons">
+            <button type="submit" class="btn">Добавить</button>
+            <a href="{{ route('products.index') }}" class="btn danger">Отмена</a>
+        </div>
     </form>
 @endsection

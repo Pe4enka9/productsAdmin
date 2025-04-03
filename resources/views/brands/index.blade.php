@@ -1,36 +1,30 @@
 @extends('layouts.main')
+@section('css', asset('css/card.css'))
 @section('title', 'Бренды')
 
 @section('content')
-    <a href="{{ route('users.dashboard') }}">Домой</a>
+    <a href="{{ route('users.dashboard') }}" class="btn home mb-2">Домой <img src="{{ asset('icons/house.svg') }}"
+                                                                              alt="House"></a>
 
-    <h1>Бренды</h1>
+    <h1 class="mb-2">Бренды</h1>
 
-    <a href="{{ route('brands.create') }}">Добавить</a>
+    <a href="{{ route('brands.create') }}" class="btn mb-2">Добавить</a>
 
-    <table>
-        <thead>
-        <tr>
-            <td>#</td>
-            <td>Название</td>
-        </tr>
-        </thead>
-
-        <tbody>
+    <section class="grid">
         @foreach($brands as $brand)
-            <tr>
-                <td>{{ $brand->id }}</td>
-                <td>{{ $brand->name }}</td>
-                <td><a href="{{ route('brands.edit', $brand) }}">Изменить</a></td>
-                <td>
+            <div class="card">
+                <h2 class="mb-2">{{ $brand->name }}</h2>
+
+                <div class="actions">
+                    <a href="{{ route('brands.edit', $brand) }}" class="btn">Изменить</a>
+
                     <form action="{{ route('brands.destroy', $brand) }}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Удалить</button>
+                        <button type="submit" class="btn danger">Удалить</button>
                     </form>
-                </td>
-            </tr>
+                </div>
+            </div>
         @endforeach
-        </tbody>
-    </table>
+    </section>
 @endsection

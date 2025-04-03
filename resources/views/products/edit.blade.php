@@ -1,12 +1,13 @@
 @extends('layouts.main')
+@section('css', asset('css/form.css'))
 @section('title', 'Изменить товар')
 
 @section('content')
-    <h1>Изменить товар</h1>
-
     <form action="{{ route('products.update', $product) }}" method="post">
         @csrf
         @method('PATCH')
+
+        <h1 class="mb-2">Изменить товар</h1>
 
         <div class="input-container">
             <label for="name">Название</label>
@@ -46,6 +47,9 @@
             </select>
         </div>
 
-        <button type="submit">Изменить</button>
+        <div class="buttons">
+            <button type="submit" class="btn">Изменить</button>
+            <a href="{{ route('products.index') }}" class="btn danger">Отмена</a>
+        </div>
     </form>
 @endsection

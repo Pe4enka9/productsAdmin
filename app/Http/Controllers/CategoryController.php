@@ -16,8 +16,11 @@ class CategoryController extends Controller
             ->with('childrenCategories')
             ->get();
 
+        $allCategories = Category::all();
+
         return view('categories.index', [
             'categories' => $categories,
+            'allCategories' => $allCategories,
         ]);
     }
 
@@ -34,10 +37,14 @@ class CategoryController extends Controller
     // Добавление категории
     public function store(CategoryRequest $request): RedirectResponse
     {
-        Category::create([
+        $category = Category::create([
             'name' => $request->input('name'),
-            'parent_id' => $request->input('parent_id'),
         ]);
+
+        if ($request->input('parent_id') !== '0') {
+            $category->parent_id = $request->input('parent_id');
+            $category->save();
+        }
 
         return redirect()->route('categories.index');
     }
@@ -58,8 +65,15 @@ class CategoryController extends Controller
     {
         $category->update([
             'name' => $request->input('name'),
-            'parent_id' => $request->input('parent_id'),
         ]);
+
+        if ($request->input('parent_id') !== '0') {
+            $category->parent_id = $request->input('parent_id');
+        } else {
+            $category->parent_id = null;
+        }
+
+        $category->save();
 
         return redirect()->route('categories.index');
     }

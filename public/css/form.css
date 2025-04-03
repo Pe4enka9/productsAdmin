@@ -1,0 +1,49 @@
+@import "variables.css";
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    width: 35rem;
+
+    padding: 3rem;
+
+    background: linear-gradient(var(--color1), var(--color2));
+
+    -webkit-border-radius: var(--radius);
+    -moz-border-radius: var(--radius);
+    border-radius: var(--radius);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input-container {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+input, select, option {
+    padding: .4em .7em;
+
+    background-color: #fff;
+
+    outline: none;
+    border: .2rem solid #ccc;
+    -webkit-border-radius: var(--radius);
+    -moz-border-radius: var(--radius);
+    border-radius: var(--radius);
+
+    transition: border-color .5s ease;
+}
+
+input:focus, select:focus {
+    border-color: var(--secondary);
+}
