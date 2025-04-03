@@ -14,6 +14,16 @@
             @error('name') <p class="error">{{ $message }}</p> @enderror
         </div>
 
+        <div class="input-container">
+            <label for="parent_id">Родитель</label>
+            <select name="parent_id" id="parent_id">
+                @foreach($categories as $parent)
+                    <option value="{{ $parent->id }}" {{ $parent->id === $category->parent_id ? 'selected' : '' }}>{{ $parent->name }}</option>
+                @endforeach
+            </select>
+            @error('parent_id') <p class="error">{{ $message }}</p> @enderror
+        </div>
+
         <button type="submit">Изменить</button>
     </form>
 @endsection

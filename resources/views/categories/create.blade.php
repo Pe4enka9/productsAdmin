@@ -13,6 +13,16 @@
             @error('name') <p class="error">{{ $message }}</p> @enderror
         </div>
 
+        <div class="input-container">
+            <label for="parent_id">Родитель</label>
+            <select name="parent_id" id="parent_id">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            @error('parent_id') <p class="error">{{ $message }}</p> @enderror
+        </div>
+
         <button type="submit">Добавить</button>
     </form>
 @endsection

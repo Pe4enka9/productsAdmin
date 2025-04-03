@@ -12,7 +12,9 @@ class CategoryController extends Controller
     // Все категории
     public function index(): View
     {
-        $categories = Category::all();
+        $categories = Category::whereNull('parent_id')
+            ->with('childrenCategories')
+            ->get();
 
         return view('categories.index', [
             'categories' => $categories,
@@ -22,7 +24,11 @@ class CategoryController extends Controller
     // Форма добавления категории
     public function create(): View
     {
-        return view('categories.create');
+        $categories = Category::all();
+
+        return view('categories.create', [
+            'categories' => $categories,
+        ]);
     }
 
     // Добавление категории
@@ -30,6 +36,7 @@ class CategoryController extends Controller
     {
         Category::create([
             'name' => $request->input('name'),
+            'parent_id' => $request->input('parent_id'),
         ]);
 
         return redirect()->route('categories.index');
@@ -38,7 +45,10 @@ class CategoryController extends Controller
     // Форма редактирования категории
     public function edit(Category $category): View
     {
+        $categories = Category::all();
+
         return view('categories.edit', [
+            'categories' => $categories,
             'category' => $category,
         ]);
     }
@@ -48,6 +58,7 @@ class CategoryController extends Controller
     {
         $category->update([
             'name' => $request->input('name'),
+            'parent_id' => $request->input('parent_id'),
         ]);
 
         return redirect()->route('categories.index');

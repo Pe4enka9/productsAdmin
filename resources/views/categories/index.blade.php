@@ -6,7 +6,19 @@
 
     <h1>Категории</h1>
 
-    <a href="{{ route('categories.store') }}">Добавить</a>
+    <a href="{{ route('categories.create') }}">Добавить</a>
+
+    <ul>
+        @foreach($categories as $category)
+            <li>{{ $category->name }}</li>
+
+            <ul>
+                @foreach($category->childrenCategories as $childrenCategory)
+                    @include('categories.children_categories', ['childrenCategory' => $childrenCategory])
+                @endforeach
+            </ul>
+        @endforeach
+    </ul>
 
     <table>
         <thead>
