@@ -23,7 +23,7 @@
 
         <div class="input-container">
             <label for="price">Цена</label>
-            <input type="number" name="price" id="price" step="0.1" value="{{ $product->price }}">
+            <input type="number" name="price" id="price" step="0.01" value="{{ $product->price }}">
             @error('price') <p class="error">{{ $message }}</p> @enderror
         </div>
 

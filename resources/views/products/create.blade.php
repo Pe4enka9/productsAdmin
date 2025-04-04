@@ -22,7 +22,7 @@
 
         <div class="input-container">
             <label for="price">Цена</label>
-            <input type="number" name="price" id="price" step="0.1" value="{{ old('price') }}">
+            <input type="number" name="price" id="price" step="0.01" value="{{ old('price') }}">
             @error('price') <p class="error">{{ $message }}</p> @enderror
         </div>
 
